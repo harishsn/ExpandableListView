@@ -9,11 +9,6 @@ Features:
 *3rd level Child expansion with bounce animation
 
 
-Screenshots:
-![alt tag](https://www.github.com/harishsn/ExpandableListView/tree/master/CustomExpandableListView/screenshots/SC20140802-210656.png)
-![alt tag](https://www.github.com/harishsn/ExpandableListView/tree/master/CustomExpandableListView/screenshots/SC20140802-210738.png)
-![alt tag](https://www.github.com/harishsn/ExpandableListView/tree/master/CustomExpandableListView/screenshots/SC20140802-210921.png)
-
 Usage:
 Import project to Eclipse
 

@@ -1,7 +1,15 @@
 ExpandableListView
 ==================
 
-Custom 3-Level ExpandableListView with group images
+3 level ExpandableListview with custom adapter
 
-Import this android project to Eclipse
+Features:
+*Easy Customization
+*Image background in Group
+*3rd level Child expansion with bounce animation
+
+
+Usage:
+Import project to Eclipse
+
 

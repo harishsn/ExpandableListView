@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+     <RelativeLayout
+      android:id="@+id/toggle_layout"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/list_Item_layout"
+      android:background="@drawable/card_background_blue"
+      android:visibility="gone" >
+
+         <Button
+             android:id="@+id/details"
+             android:layout_width="wrap_content"
+             android:layout_height="30dp"
+             android:textSize="15sp"
+             android:layout_alignBaseline="@+id/directions"
+             android:layout_alignBottom="@+id/directions"
+             android:layout_alignParentLeft="true"
+             android:layout_toLeftOf="@+id/view"
+             android:layout_marginLeft="5dp"
+             android:background="#3F9FE0"
+             android:text=" SHOW DETAILS " />
+
+        <Button
+            android:id="@+id/directions"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/view"
+            android:layout_marginRight="5dp"
+            android:textSize="15sp"
+            android:background="#3F9FE0"
+            android:text=" GET DIRECTIONS " />
+
+          <View
+              android:id="@+id/view"
+              android:layout_width="5dp"
+              android:layout_height="match_parent"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:background="#00000000" />
+ 
+  </RelativeLayout>
+    
+    
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/list_Item_layout"
+    android:background="@drawable/card_background_sqr_white" 
+    >
+    
+    <TextView
+        android:id="@+id/lblListItem"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/expand_colapse"
+        android:paddingLeft="5dp"
+        android:paddingTop="2dp"
+        android:text="listitem"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/listItemInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblListItem"
+        android:layout_toRightOf="@+id/expand_colapse"
+        android:paddingBottom="5dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="20dp"
+        android:text="info"
+        android:textSize="15sp" />
+    
+    <ToggleButton
+        android:id="@+id/expand_colapse"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/togglearrow"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textOff=""
+        android:textOn="" />
+
+   
+    
+    
+
+      
+    
+   </RelativeLayout>
+
+ 
+ 
+</RelativeLayout>
+
+    

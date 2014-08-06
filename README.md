@@ -10,9 +10,12 @@ Features:
 
 
 Usage: <br>
+-----------
 Import project to Eclipse and run. <br>
-------------
-In case errors Import Appcompat (..\sdk\extras\android\support\v7\appcompat) to workspace and add as library. <br>
-Clean the project.
+
+
+In case of errors :
+Import Appcompat (..\sdk\extras\android\support\v7\appcompat) to workspace and add as library. <br>
+Clean the project and Run.
 
 

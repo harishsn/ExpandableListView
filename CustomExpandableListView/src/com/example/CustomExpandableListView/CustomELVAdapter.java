@@ -1,7 +1,10 @@
 package com.example.CustomExpandableListView;
 
+
+
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +28,9 @@ public class CustomELVAdapter extends BaseExpandableListAdapter implements Expan
     private String[] groupname;
     private int[] ImgBckgrnd;
     private Context context;
+    BounceInterpolator   bounceInterpolator;
     View v;
-    int img;
+  
     
 	
 	
@@ -43,19 +47,20 @@ public class CustomELVAdapter extends BaseExpandableListAdapter implements Expan
     	
     	vi = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	
+        bounceInterpolator = new BounceInterpolator();
     }
 
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
     	 String child = getChild(groupPosition, childPosition);
          String list = getList(groupPosition, childPosition);
+          v = convertView;
+         v = vi.inflate(CHILD_ITEM_RESOURCE, null);
+         final ViewHolder  holder = new ViewHolder(v);
+      
          
-         if (child != null) {
-             v = convertView;
-                v = vi.inflate(CHILD_ITEM_RESOURCE, null);
-                
-                // FROM ViewHolder CLASS
-                final ViewHolder holder = new ViewHolder(v);
+         if (child != null) {      
+             
                 
                 holder.ExpCol.setFocusable(false);
                 
@@ -77,8 +82,7 @@ public class CustomELVAdapter extends BaseExpandableListAdapter implements Expan
                 final Animation slidedown = AnimationUtils.loadAnimation(v.getContext(), R.anim.slide_down);
                 final Animation slideup = AnimationUtils.loadAnimation(v.getContext(), R.anim.slide_up);
                 
-                /** BOUNCE ANIMATION **/
-                BounceInterpolator   bounceInterpolator = new BounceInterpolator();
+               
                 
                 /**SET BOUNCE INTERPOLATOR TO SLIDEDOWN**/
                 slidedown.setInterpolator(bounceInterpolator);
@@ -181,33 +185,37 @@ public class CustomELVAdapter extends BaseExpandableListAdapter implements Expan
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         View v = convertView;
-       String group = null; 
-       
-       long group_id = getGroupId(groupPosition);
-        for(int i=0;i<=group_id;i++)
-        {
-        if(group_id == i){
-        	group = groupname[i];
-        	img = ImgBckgrnd[i];
-           }
+        ViewHolder holder;
+        if(v==null){
+        v = vi.inflate(GROUP_ITEM_RESOURCE, null);
+        holder = new ViewHolder(v);
+        v.setTag(holder);
+        }else{
+        	holder = (ViewHolder) v.getTag();
         }
-      
         
-        if (group != null) {
-            v = vi.inflate(GROUP_ITEM_RESOURCE, null);
-            ViewHolder holder = new ViewHolder(v);
-            /**SET GROUP HEAD TEXT**/
-            holder.GroupHead.setText(group);
+        if (getGroupName(groupPosition) != null) {
+          
+           /**SET GROUP HEAD TEXT**/
+            holder.GroupHead.setText(getGroupName(groupPosition));
             
             /**SET IMAGE BACKGROUND
              * DO NOT LOAD IMAGES ON UI THREAD
-             * USE ASYNCTASK TO LOAD IMAGES **/
+             * USE ASYNCTASK TO LOAD IMAGES FROM WEB **/
             
-            holder.LayoutBackground.setBackgroundResource(img);
+            holder.LayoutBackground.setBackgroundResource(getImage(groupPosition));
             }
         return v;
     }
     
+    
+    public int getImage(int groupPosition){
+ 		return ImgBckgrnd[groupPosition];
+     }
+     
+     public String getGroupName(int groupPosition){
+   		return groupname[groupPosition];
+       }
 
 	@Override
 	public String getChild(int groupPosition, int childPosition) {
@@ -241,7 +249,7 @@ public class CustomELVAdapter extends BaseExpandableListAdapter implements Expan
     @Override
 	public boolean hasStableIds() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
     @Override

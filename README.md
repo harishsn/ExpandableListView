@@ -1,4 +1,4 @@
-ExpandableListView
+ExpandableListView (Deprecated)
 ==================
 <strong>3 level ExpandableListview with custom adapter</strong><br>
 
